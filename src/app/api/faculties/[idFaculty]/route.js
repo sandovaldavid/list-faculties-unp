@@ -25,9 +25,16 @@ export async function DELETE(request, {params}) {
   }
 }
 
-export function PUT() {
-  return NextResponse.json({
-    message: "This is a PUT response from /api/faculties/[idFaculty]"
-  })
+export async function PUT(request, {params}) {
+  try {
+    const {name, description, path_img} = await request.json();
+    const response = await pool.query("UPDATE faculties SET name = ?, description = ?, path_img = ? WHERE id = ?", [name, description, path_img, params.idFaculty]);
+    if (response.affectedRows === 0) {
+      return NextResponse.json({message: "Faculty not found"}, {status: 404})
+    }
+    return NextResponse.json(response)
+  } catch (e) {
+    return NextResponse.json({error: e.message}, {status: 500})
+  }
 }
 
