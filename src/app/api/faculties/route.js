@@ -11,7 +11,20 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  return NextResponse.json({
-    message: "This is a POST response from /api/faculties"
-  })
+  try {
+    const {name, description, path_img} = await request.json();
+    const result = await pool.query("INSERT INTO faculties SET ?", {
+      name,
+      description,
+      path_img
+    });
+    return NextResponse.json({
+      name,
+      description,
+      path_img,
+      id: result.insertId
+    });
+  } catch (error) {
+    return NextResponse.json({error: error.message}, {status: 500});
+  }
 }
