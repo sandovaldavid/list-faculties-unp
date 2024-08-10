@@ -3,3 +3,5 @@ function FacultiesPage() {
     <p>AllFaculties</p>
   );
 }
+
+export default FacultiesPage;
