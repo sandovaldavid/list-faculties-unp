@@ -1,4 +1,5 @@
 import axios from 'axios';
+import FacultyCard from "@/components/facultyCard";
 
 async function loadFaculties() {
   const {data} = await axios.get("http://localhost:3000/api/faculties")
@@ -8,12 +9,9 @@ async function loadFaculties() {
 async function FacultiesPage() {
   const faculties = await loadFaculties();
   return (
-    <div className="grid gap-4 grid-cols-4 ">
+    <div className="grid gap-4 grid-cols-4">
       {faculties.map(faculty => (
-        <div key={faculty.id} className="bg-white rounded-lg border-gray-800 p-4">
-          <h1 className="text-ls font-bold ">{faculty.name}</h1>
-          <p>{faculty.description}</p>
-        </div>
+        <FacultyCard faculty={faculty} key={faculty.id}/>
       ))}
     </div>
   );
