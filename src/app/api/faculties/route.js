@@ -2,9 +2,12 @@ import {NextResponse} from "next/server";
 import {pool} from "@/libs/mysql";
 
 export async function GET() {
-  return NextResponse.json({
-    message: "This is a GET response from /api/faculties"
-  });
+  try {
+    const results = await pool.query("SELECT * FROM faculties");
+    return NextResponse.json(results);
+  } catch (e) {
+    return NextResponse.json({error: e.message}, {status: 500});
+  }
 }
 
 export async function POST(request) {
