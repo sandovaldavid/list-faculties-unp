@@ -32,7 +32,7 @@ export async function PUT(request, {params}) {
     if (response.affectedRows === 0) {
       return NextResponse.json({message: "Faculty not found"}, {status: 404})
     }
-    return NextResponse.json(response)
+    return new Response(null, {status: 204})
   } catch (e) {
     return NextResponse.json({error: e.message}, {status: 500})
   }
