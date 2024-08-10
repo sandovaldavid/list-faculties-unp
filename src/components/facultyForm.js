@@ -1,6 +1,7 @@
 "use client";
 import {useRef, useState} from "react";
 import axios from "axios";
+import {useRouter} from "next/navigation"
 
 function facultyForm() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -10,6 +11,7 @@ function facultyForm() {
   });
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const useForm = useRef();
+  const router = useRouter();
   const handleChange = (e) => {
     setFaculty({...faculty, [e.target.name]: e.target.value});
   }
@@ -18,6 +20,7 @@ function facultyForm() {
     const res = await axios.post("/api/faculties", faculty)
     console.log(res);
     useForm.current.reset();
+    router.push("/faculties");
   }
   return (
     <form
