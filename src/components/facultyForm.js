@@ -58,8 +58,8 @@ function facultyForm() {
         },
       });
     }
-    router.refresh();
     router.push("/faculties");
+    router.refresh();
     
   }
   

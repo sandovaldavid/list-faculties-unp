@@ -9,7 +9,7 @@ async function loadFaculties() {
 async function FacultiesPage() {
   const faculties = await loadFaculties();
   return (
-    <div className="grid gap-4 grid-cols-4">
+    <div className="flex flex-wrap flex-row justify-around mt-8">
       {faculties.map(faculty => (
         <FacultyCard faculty={faculty} key={faculty.id}/>
       ))}
