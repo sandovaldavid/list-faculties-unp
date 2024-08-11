@@ -15,16 +15,18 @@ export async function GET() {
 
 export async function POST(request) {
   try {
-    const {name, description, path_img} = await request.json();
+    const data = await request.formData();
+    if (!data.get("facultyImage")) {
+      return NextResponse.json({error: "No image provided"}, {status: 400});
+    }
     const result = await pool.query("INSERT INTO faculties SET ?", {
-      name,
-      description,
-      path_img
+      name: data.get("name"),
+      description: data.get("description"),
+      path_img: data.get("facultyImage").name
     });
     return NextResponse.json({
-      name,
-      description,
-      path_img,
+      name: data.get("name"),
+      description: data.get("description"),
       id: result.insertId
     });
   } catch (error) {
