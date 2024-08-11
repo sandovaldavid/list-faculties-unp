@@ -18,7 +18,7 @@ async function FacultyPage({params}) {
       <div className="p-6 bg-white  w-1/3 rounded-3xl">
         <p>Name: {faculty.name}</p>
         <p>Name: {faculty.description}</p>
-        <Buttons/>
+        <Buttons facultyId={faculty.id}/>
       </div>
     </section>
   );
