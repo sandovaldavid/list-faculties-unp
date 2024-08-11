@@ -32,28 +32,31 @@ function facultyForm() {
           });
         })
         .catch((error) => {
-          console.log(error.response.data);
+          return error.response.data;
         });
     }
   }, []);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", faculty.name);
+    formData.append("description", faculty.description);
+    if (file) {
+      formData.append("facultyImage", file);
+    }
     if (params.idFaculty === undefined) {
-      const formData = new FormData();
-      formData.append("name", faculty.name);
-      formData.append("description", faculty.description);
-      if (file) {
-        console.log("si esxiste ")
-        formData.append("facultyImage", file);
-      }
       const res = await axios.post("/api/faculties", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
     } else {
-      const res = await axios.put("/api/faculties/" + params.idFaculty, faculty);
+      const res = await axios.put("/api/faculties/" + params.idFaculty, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
     }
     router.refresh();
     router.push("/faculties");
