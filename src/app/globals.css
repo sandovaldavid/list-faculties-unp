@@ -4,4 +4,10 @@
 
 body {
   @apply bg-gray-950;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  margin: 0;
+  padding: 0;
 }
