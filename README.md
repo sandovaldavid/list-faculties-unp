@@ -13,6 +13,19 @@ pnpm dev
 # or
 bun dev
 ```
+# Archivo .env. agregar las siguientes lineas:
+## Modificas las variables de entorno con tus credenciales de Cloudinary y de tu base de datos
+```
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=
+DB_DATABASE=
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dfs757coe
+CLOUDINARY_CLOUD_NAME=dfs757coe
+CLOUDINARY_API_KEY=859499136241997
+CLOUDINARY_API_SECRET=OWw94SlzUVUWhClrcJlowdg9Vc4
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
