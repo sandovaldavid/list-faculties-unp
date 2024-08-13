@@ -41,3 +41,4 @@ next-env.d.ts
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+.vercel
