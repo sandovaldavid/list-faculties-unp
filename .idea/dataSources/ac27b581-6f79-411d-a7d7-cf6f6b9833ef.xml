@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="@localhost">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.52">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.53">
     <root id="1">
       <DefaultCasing>exact</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -941,22 +941,22 @@ facultades|schema||adm_fc||UPDATE|G</Grants>
     </table>
     <column id="293" parent="292" name="id">
       <AutoIncrement>302</AutoIncrement>
-      <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
+      <StoredType>int|0s</StoredType>
     </column>
     <column id="294" parent="292" name="name">
-      <DasType>varchar(100)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
+      <StoredType>varchar(100)|0s</StoredType>
     </column>
     <column id="295" parent="292" name="description">
-      <DasType>text|0s</DasType>
       <Position>3</Position>
+      <StoredType>text|0s</StoredType>
     </column>
     <column id="296" parent="292" name="path_img">
-      <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
     </column>
     <index id="297" parent="292" name="PRIMARY">
       <ColNames>id</ColNames>
