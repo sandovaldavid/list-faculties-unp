@@ -35,7 +35,7 @@ function facultyForm() {
           return error.response.data;
         });
     }
-  }, []);
+  }, [params.idFaculty]);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
