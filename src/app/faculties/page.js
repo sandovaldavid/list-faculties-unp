@@ -1,9 +1,15 @@
+"use client"
 import axios from 'axios';
 import FacultyCard from "@/components/facultyCard";
 
 async function loadFaculties() {
-  const {data} = await axios.get("http://localhost:3000/api/faculties")
-  return data;
+  try {
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/faculties`);
+    return data;
+  } catch (error) {
+    console.error('Error loading faculties:', error);
+    return [];  // Retorna un array vacío si hay un error para evitar que la página falle
+  }
 }
 
 async function FacultiesPage() {
