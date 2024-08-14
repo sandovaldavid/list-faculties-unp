@@ -1,26 +1,31 @@
-"use client"
-import axios from 'axios';
 import FacultyCard from "@/components/facultyCard";
+import {pool} from "@/libs/mysql";
 
 async function loadFaculties() {
   try {
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/faculties`);
-    return data;
+    return await pool.query("SELECT * FROM faculties");
   } catch (error) {
+    console.log("Se produjo un error al cargar las facultades.");
     console.error('Error loading faculties:', error);
-    return [];  // Retorna un array vacío si hay un error para evitar que la página falle
+    return [];
   }
 }
 
-async function FacultiesPage() {
-  const faculties = await loadFaculties();
+export default async function FacultiesPage() {
+  let faculties = await loadFaculties();
+  if (!Array.isArray(faculties)) {
+    faculties = [faculties];
+  }
+  
   return (
     <div className="flex flex-wrap flex-row justify-around mt-8">
-      {faculties.map(faculty => (
-        <FacultyCard faculty={faculty} key={faculty.id}/>
-      ))}
+      {faculties.length > 0 ? (
+        faculties.map(faculty => (
+          <FacultyCard faculty={faculty} key={faculty.id}/>
+        ))
+      ) : (
+        <p className="bg-red-500 text-white py-1.5 px-2.5 rounded-2xl">No faculties found !!!</p>
+      )}
     </div>
   );
 }
-
-export default FacultiesPage;
