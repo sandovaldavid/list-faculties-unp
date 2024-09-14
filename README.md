@@ -32,6 +32,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Create Docker Container
+```bash
+docker run --name list_Facultades -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=facultades -e MYSQL_USER=adm -e MYSQL_PASSWORD=adm -p 3306:3306 -d mysql:8.0 --default-authentication-plugin=mysql_native_password
+```
 
 ## Learn More
 
