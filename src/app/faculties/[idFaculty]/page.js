@@ -11,6 +11,7 @@ async function loadFacultyId(facultyId) {
         ? 'http://localhost:3000'
         : '';
 
+    console.log("baseURL", baseURL);
     const response = await axios.get(`${baseURL}/api/faculties/${facultyId}`);
     
     if (response.status === 200) {
