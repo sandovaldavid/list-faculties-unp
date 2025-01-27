@@ -11,9 +11,9 @@ function Buttons({ facultyId }) {
     try {
       setIsDeleting(true);
       if (confirm("¿Estás seguro de eliminar esta facultad?")) {
-        const res = await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/faculties/${facultyId}`);
+        const res = await axios.delete(`/api/faculties/${facultyId}`);
         if (res.status === 204) {
-          router.push("/faculties");
+          await router.push('/faculties');
           router.refresh();
         }
       }
