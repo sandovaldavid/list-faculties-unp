@@ -42,10 +42,14 @@ function FacultyForm() {
       const formData = new FormData();
       formData.append("name", faculty.name);
       formData.append("description", faculty.description);
-      if (file) formData.append("facultyImage", file);
+      if (file) {
+        formData.append("facultyImage", file);
+      }
 
       const config = {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { 
+          "Content-Type": "multipart/form-data"
+        }
       };
 
       if (params.idFaculty) {
@@ -57,7 +61,8 @@ function FacultyForm() {
       router.push("/faculties");
       router.refresh();
     } catch (err) {
-      setError(err.response?.data?.message || 'Error saving faculty');
+      console.error("Form submission error:", err);
+      setError(err.response?.data?.message || "Error saving faculty");
     } finally {
       setLoading(false);
     }
