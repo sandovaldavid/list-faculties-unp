@@ -4,15 +4,16 @@ import cloudinary from "@/libs/cloudinary";
 import {processImage} from "@/libs/processImage";
 import {unlink} from "fs/promises";
 
-export async function GET(request, {params}) {
+export async function GET(request, { params }) {
   try {
     const result = await pool.query("SELECT * FROM faculties WHERE id = ?", [params.idFaculty]);
     if (result.length === 0) {
-      return NextResponse.json({message: "Faculty not found"}, {status: 404})
+      return NextResponse.json({ message: "Faculty not found" }, { status: 404 });
     }
-    return NextResponse.json(result[0])
-  } catch (e) {
-    return NextResponse.json({error: e.message}, {status: 500})
+    return NextResponse.json(result[0]);
+  } catch (error) {
+    console.error('Error in GET faculty:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
