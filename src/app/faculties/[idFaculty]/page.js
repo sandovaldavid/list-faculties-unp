@@ -16,8 +16,8 @@ async function loadFacultyId(facultyId) {
     if (response.status === 200) {
       return response.data;
     }
-    
-    throw new Error(`Failed to fetch faculty: ${response.statusText}`);
+
+    return null;
   } catch (error) {
     console.error('Error loading faculty:', error);
     return null;
