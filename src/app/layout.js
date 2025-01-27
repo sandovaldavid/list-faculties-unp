@@ -11,7 +11,7 @@ export const metadata = {
     "facultades",
     "universidad",
     "UNP",
-    "gestión académica",
+    "gestión académica", 
     "educación superior",
     "sistema universitario"
   ],
@@ -22,27 +22,22 @@ export const metadata = {
   publisher: "Universidad Nacional de Piura",
   icons: {
     icon: "/favicon.ico",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  openGraph: {
-    title: "Sistema de Gestión de Facultades | UNP",
-    description: "Gestión completa de facultades universitarias",
-    type: "website",
-    locale: "es_PE",
-    url: "facultades-unp.devprojects.tech ",
   }
+};
+
+// Viewport configuration in its own export
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({children}) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={inter.className}>
-        <Navbar />
-        <div className="mt-16 min-h-[calc(100vh-4rem)] container mx-auto px-4 py-8">
+        <Navbar/>
+        <div className="mt-16 min-h-[calc(100vh-4rem)]">
           {children}
         </div>
       </body>
