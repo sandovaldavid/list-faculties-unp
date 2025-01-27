@@ -1,6 +1,6 @@
 USE facultades;
 
-CREATE TABLE faculties (
+CREATE TABLE IF NOT EXISTS faculties (
     id          int primary key auto_increment,
     name        varchar(100) not null,
     description text,
