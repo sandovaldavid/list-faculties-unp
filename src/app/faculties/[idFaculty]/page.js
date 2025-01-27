@@ -6,12 +6,10 @@ import Buttons from "@/components/buttons";
 async function loadFacultyId(facultyId) {
   try {
     const baseURL = process.env.VERCEL_URL 
-      ? `https://${process.env.VERCEL_URL}`
-      : process.env.NODE_ENV === 'production'
-        ? 'https://facultades-unp.devprojects.tech'
-        : 'http://localhost:3000';
+      ? `https://${process.env.VERCEL_URL}` 
+      : 'http://localhost:3000';
 
-    const response = await axios.get(`${baseURL}/api/faculties/${facultyId}`);
+    const response = await axios.get(`/api/faculties/${facultyId}`);
     
     if (response.status === 200) {
       return response.data;
