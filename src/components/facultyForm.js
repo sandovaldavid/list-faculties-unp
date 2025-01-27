@@ -23,13 +23,20 @@ function FacultyForm() {
             description: res.data.description,
           });
         })
-        .catch((error) => setError(error.response?.data || 'Error loading faculty'))
+        .catch((error) => {
+          console.error("Error fetching faculty:", error);
+          setError(error.response?.data?.message || 'Error loading faculty');
+        })
         .finally(() => setLoading(false));
     }
   }, [params.idFaculty]);
 
   const handleChange = (e) => {
-    setFaculty({ ...faculty, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFaculty(prev => ({
+      ...prev,
+      [name]: value
+    }));
     setError(null);
   };
 
@@ -52,17 +59,32 @@ function FacultyForm() {
         }
       };
 
+      let response;
       if (params.idFaculty) {
-        await axios.put(`/api/faculties/${params.idFaculty}`, formData, config);
+        response = await axios.put(`/api/faculties/${params.idFaculty}`, formData, config);
+        // Handle 204 status for successful update
+        if (response.status === 204) {
+          router.push("/faculties");
+          router.refresh();
+          return;
+        }
       } else {
-        await axios.post("/api/faculties", formData, config);
+        response = await axios.post("/api/faculties", formData, config);
       }
 
-      router.push("/faculties");
-      router.refresh();
+      if (response.status === 200 || response.status === 201) {
+        router.push("/faculties");
+        router.refresh();
+      } else {
+        throw new Error("Unexpected response status");
+      }
     } catch (err) {
       console.error("Form submission error:", err);
-      setError(err.response?.data?.message || "Error saving faculty");
+      setError(
+        err.response?.data?.message || 
+        err.message || 
+        "Error saving faculty. Please try again."
+      );
     } finally {
       setLoading(false);
     }
