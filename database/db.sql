@@ -1,13 +1,12 @@
-use facultades;
-create table faculties
-(
+USE facultades;
+
+CREATE TABLE faculties (
     id          int primary key auto_increment,
     name        varchar(100) not null,
     description text,
     path_img    VARCHAR(255)
 );
-drop table faculties;
-select * from faculties;
+
 INSERT INTO faculties (name, description, path_img) VALUES
                                                         ('Faculty of Engineering', 'Focused on developing engineering professionals with solid technical and practical skills.', '/images/engineering.jpg'),
                                                         ('Faculty of Medicine', 'Offers comprehensive training in health sciences and medical practices.', '/images/medicine.jpg'),
