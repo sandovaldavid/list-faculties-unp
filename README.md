@@ -1,53 +1,149 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📚 Lista de Facultades CRUD
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-14.2.5-black)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.1-38B2AC)
 
-First, run the development server:
+---
+
+## 📋 Table of Contents
+
+- Overview
+- Features
+- Tech Stack
+- Prerequisites
+- Installation
+- Database Setup
+- Environment Variables
+- Project Structure
+- API Endpoints
+- Contributing
+
+## 🎯 Overview
+
+A web application for managing university faculties. This project provides a complete CRUD (Create, Read, Update, Delete) interface for faculty management with a modern and responsive design.
+
+## ✨ Features
+
+- ✅ Create new faculties with images
+- 📖 View list of all faculties
+- 🔄 Update faculty information
+- 🗑️ Delete faculties
+- 📱 Responsive design for all devices
+- 🖼️ Image upload support
+- 🌐 RESTful API integration
+
+## 🛠 Tech Stack
+
+| Technology    | Purpose                         |
+|--------------|----------------------------------|
+| Next.js 14   | Frontend & Backend Framework     |
+| MySQL        | Database                         |
+| Tailwind CSS | Styling                          |
+| Docker       | Containerization                 |
+| Cloudinary   | Image Storage                    |
+
+## 📋 Prerequisites
+
+- Node.js ≥ 18
+- Docker & Docker Compose
+- MySQL 8.0
+- npm or bun
+
+## 🚀 Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/list-faculties-CRUD.git
+
+# Navigate to project directory
+cd list-faculties-CRUD
+
+# Install dependencies
+npm install
+
+# Start Docker containers in development mode
+docker-compose up web-dev -d
+
+# Start Docker containers in production mode
+docker-compose up web-prod -d
+
+# Initialize database
+docker exec -i db_facultades mysql -u adm -padm facultades < database/db.sql
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-# Archivo .env. agregar las siguientes lineas:
-## Modificas las variables de entorno con tus credenciales de Cloudinary y de tu base de datos
-```
-DB_USER=
-DB_PASSWORD=
-DB_HOST=
-DB_PORT=
-DB_DATABASE=
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dfs757coe
-CLOUDINARY_CLOUD_NAME=dfs757coe
-CLOUDINARY_API_KEY=859499136241997
-CLOUDINARY_API_SECRET=OWw94SlzUVUWhClrcJlowdg9Vc4
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💾 Database Setup
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The database schema includes:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-## Create Docker Container
-```bash
-docker run --name list_Facultades -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=facultades -e MYSQL_USER=adm -e MYSQL_PASSWORD=adm -p 3306:3306 -d mysql:8.0 --default-authentication-plugin=mysql_native_password
+```sql
+CREATE TABLE faculties (
+    id          int primary key auto_increment,
+    name        varchar(100) not null,
+    description text,
+    path_img    VARCHAR(255)
+);
 ```
 
-## Learn More
+## 🔐 Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create a `.env` file with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+DB_HOST=localhost
+DB_USER=adm
+DB_PASSWORD=adm
+DB_DATABASE=facultades
+DB_PORT=3306
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+``` notes
+list-faculties-CRUD/
+├── src/
+│   ├── app/             # Next.js pages
+│   ├── components/      # React components
+│   └── libs/           # Utilities and configurations
+├── database/           # Database scripts
+├── docker/            # Docker configuration
+└── public/            # Static assets
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔄 API Endpoints
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/faculties` | GET | Get all faculties |
+| `/api/faculties` | POST | Create new faculty |
+| `/api/faculties/:id` | GET | Get faculty by ID |
+| `/api/faculties/:id` | PUT | Update faculty |
+| `/api/faculties/:id` | DELETE | Delete faculty |
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- Next.js Documentation
+- Tailwind CSS Documentation
+- MySQL Documentation
+- Docker Documentation
+
+---
+Made using Next.js and MySQL
