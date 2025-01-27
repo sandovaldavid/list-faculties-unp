@@ -1,0 +1,47 @@
+services:
+  # Development service
+  web-dev:
+    container_name: web_dev
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - db
+
+  # Production service
+  web-prod:
+    container_name: web_prod
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.prod
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db
+
+  # Database service
+  db:
+    image: mysql:8.0
+    container_name: db_facultades
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=facultades
+      - MYSQL_USER=adm
+      - MYSQL_PASSWORD=adm
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:
