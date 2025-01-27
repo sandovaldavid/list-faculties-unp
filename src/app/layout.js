@@ -37,7 +37,7 @@ export default function RootLayout({children}) {
     <html lang="es">
       <body className={inter.className}>
         <Navbar/>
-        <div className="mt-16 min-h-[calc(100vh-4rem)]">
+        <div className="mt-16 w-full">
           {children}
         </div>
       </body>
