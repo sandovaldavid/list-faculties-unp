@@ -8,7 +8,7 @@ async function loadFacultyId(facultyId) {
     const baseURL = process.env.VERCEL_URL 
       ? `https://${process.env.VERCEL_URL}`
       : process.env.NODE_ENV === 'production'
-        ? 'https://your-production-url.vercel.app'
+        ? 'https://facultades-unp.devprojects.tech'
         : 'http://localhost:3000';
 
     const response = await axios.get(`${baseURL}/api/faculties/${facultyId}`);
