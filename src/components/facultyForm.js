@@ -45,45 +45,62 @@ function FacultyForm() {
     setLoading(true);
     setError(null);
 
+    // Validate required fields
+    if (!faculty.name?.trim()) {
+      setError("Name is required");
+      setLoading(false);
+      return;
+    }
+
     try {
       const formData = new FormData();
-      formData.append("name", faculty.name);
-      formData.append("description", faculty.description);
+      formData.append("name", faculty.name.trim());
+      formData.append("description", faculty.description?.trim() || '');
+      
       if (file) {
+        // Validate file type and size
+        if (!file.type.startsWith('image/')) {
+          setError('Please upload an image file');
+          setLoading(false);
+          return;
+        }
+        if (file.size > 5 * 1024 * 1024) { // 5MB limit
+          setError('Image size should be less than 5MB');
+          setLoading(false);
+          return;
+        }
         formData.append("facultyImage", file);
       }
 
-      const config = {
-        headers: { 
-          "Content-Type": "multipart/form-data"
-        }
-      };
-
       let response;
       if (params.idFaculty) {
-        response = await axios.put(`/api/faculties/${params.idFaculty}`, formData, config);
-        // Handle 204 status for successful update
-        if (response.status === 204) {
-          router.push("/faculties");
-          router.refresh();
-          return;
-        }
+        response = await axios.put(`/api/faculties/${params.idFaculty}`, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+          validateStatus: function (status) {
+            return status < 500;
+          }
+        });
       } else {
-        response = await axios.post("/api/faculties", formData, config);
+        response = await axios.post("/api/faculties", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+          validateStatus: function (status) {
+            return status < 500;
+          }
+        });
       }
 
-      if (response.status === 200 || response.status === 201) {
+      if (response.status === 204 || response.status === 200 || response.status === 201) {
         router.push("/faculties");
         router.refresh();
       } else {
-        throw new Error("Unexpected response status");
+        throw new Error(response.data?.message || "Unexpected response status");
       }
     } catch (err) {
       console.error("Form submission error:", err);
       setError(
         err.response?.data?.message || 
         err.message || 
-        "Error saving faculty. Please try again."
+        "Error saving faculty. Please check your input and try again."
       );
     } finally {
       setLoading(false);
