@@ -1,21 +1,20 @@
 import FacultyCard from "@/components/facultyCard";
 import {pool} from "@/libs/mysql";
 
+export const revalidate = 0;
+
 async function loadFaculties() {
   try {
-    return await pool.query("SELECT * FROM faculties");
+    const result = await pool.query("SELECT * FROM faculties");
+    return Array.isArray(result) ? result : [];
   } catch (error) {
-    console.log("Se produjo un error al cargar las facultades.");
     console.error('Error loading faculties:', error);
     return [];
   }
 }
 
 export default async function FacultiesPage() {
-  let faculties = await loadFaculties();
-  if (!Array.isArray(faculties)) {
-    faculties = [faculties];
-  }
+  const faculties = await loadFaculties();
   
   return (
     <div className="container mx-auto px-4 py-8">
