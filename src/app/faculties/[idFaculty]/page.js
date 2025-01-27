@@ -1,19 +1,39 @@
 import axios from "axios";
-import Buttons from "@/components/buttons";
 import Image from "next/image";
 import BackButton from "@/components/BackButton";
+import Buttons from "@/components/buttons";
 
 async function loadFacultyId(facultyId) {
   try {
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/faculties/${facultyId}`);
+    const baseURL = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3000'
+        : '';
+
+    const { data } = await axios.get(`${baseURL}/api/faculties/${facultyId}`);
     return data;
   } catch (error) {
-    return error.response?.data;
+    console.error('Error loading faculty:', error);
+    return null;
   }
 }
 
 async function FacultyPage({params}) {
   const faculty = await loadFacultyId(params.idFaculty);
+
+  if (!faculty) {
+    return (
+      <section className="container mx-auto px-4 py-8">
+        <div className="bg-red-50 border-l-4 border-red-500 p-4">
+          <p className="text-red-700">Faculty not found or error loading data</p>
+        </div>
+        <BackButton />
+      </section>
+    );
+  }
+
+  console.log('Faculty data:', faculty);
 
   return (
     <section className="container mx-auto px-4 py-8">
@@ -21,10 +41,10 @@ async function FacultyPage({params}) {
         <div className="flex flex-col md:flex-row">
           {/* Image Container */}
           <div className="w-full md:w-1/2 relative h-[300px] md:h-[400px]">
-            {faculty.path_img ? (
+            {faculty?.path_img ? (
               <Image
                 src={faculty.path_img}
-                alt={faculty.name}
+                alt={faculty.name || 'Faculty image'}
                 fill
                 className="object-cover"
                 priority
