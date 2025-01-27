@@ -1,5 +1,5 @@
 import mysql from 'serverless-mysql';
-import {db} from './config.js';
+import { db } from './config.js';
 
 export const pool = mysql({
   config: {
@@ -9,13 +9,7 @@ export const pool = mysql({
     port: db.port,
     database: db.database,
     ssl: {
-      rejectUnauthorized: false
+      rejectUnauthorized: false,
     },
-    // Support for both MySQL 8 and 9
-    authPlugins: {
-      mysql_clear_password: () => () => Buffer.from(db.password + '\0'),
-      caching_sha2_password: () => () => Buffer.from(db.password + '\0'),
-      mysql_native_password: () => () => Buffer.from(db.password + '\0')
-    }
-  }
+  },
 });
