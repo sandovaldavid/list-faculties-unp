@@ -7,12 +7,17 @@ async function loadFacultyId(facultyId) {
   try {
     const baseURL = process.env.VERCEL_URL 
       ? `https://${process.env.VERCEL_URL}`
-      : process.env.NODE_ENV === 'development' 
-        ? 'http://localhost:3000'
-        : '';
+      : process.env.NODE_ENV === 'production'
+        ? 'https://your-production-url.vercel.app'
+        : 'http://localhost:3000';
 
-    const { data } = await axios.get(`${baseURL}/api/faculties/${facultyId}`);
-    return data;
+    const response = await axios.get(`${baseURL}/api/faculties/${facultyId}`);
+    
+    if (response.status === 200) {
+      return response.data;
+    }
+    
+    throw new Error(`Failed to fetch faculty: ${response.statusText}`);
   } catch (error) {
     console.error('Error loading faculty:', error);
     return null;
