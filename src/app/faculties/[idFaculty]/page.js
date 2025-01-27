@@ -5,10 +5,10 @@ import BackButton from "@/components/BackButton";
 
 async function loadFacultyId(facultyId) {
   try {
-    const {data} = await axios.get("http://localhost:3000/api/faculties/" + facultyId)
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/faculties/${facultyId}`);
     return data;
   } catch (error) {
-    return error.response.data;
+    return error.response?.data;
   }
 }
 
