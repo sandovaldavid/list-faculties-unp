@@ -1,8 +1,8 @@
-import {NextResponse} from "next/server";
-import {pool} from "@/libs/mysql";
-import {unlink} from "fs/promises"
-import {processImage} from "@/libs/processImage";
+import { NextResponse } from "next/server";
+import { pool } from "@/libs/mysql";
 import cloudinary from "@/libs/cloudinary";
+import { processImage } from "@/libs/processImage";
+import { unlink } from "fs/promises";
 
 export async function GET() {
   try {
@@ -20,27 +20,43 @@ export async function POST(request) {
   try {
     const data = await request.formData();
     const image = data.get("facultyImage");
-    if (!image) {
-      return NextResponse.json({error: "No image provided"}, {status: 400});
+
+    // Validate required fields
+    if (!data.get("name")) {
+      return NextResponse.json(
+        { message: "Name is required" },
+        { status: 400 }
+      );
     }
-    
-    const filePath = await processImage(image);
-    const resImg = await cloudinary.uploader.upload(filePath);
-    if (resImg) {
-      await unlink(filePath);
+
+    let path_img = '';
+    if (image) {
+      const filePath = await processImage(image);
+      const resImg = await cloudinary.uploader.upload(filePath);
+      if (resImg) {
+        await unlink(filePath);
+        path_img = resImg.secure_url;
+      }
     }
-    
+
     const result = await pool.query("INSERT INTO faculties SET ?", {
       name: data.get("name"),
-      description: data.get("description"),
-      path_img: resImg.secure_url
+      description: data.get("description") || '',
+      path_img
     });
+
     return NextResponse.json({
+      id: result.insertId,
       name: data.get("name"),
-      description: data.get("description"),
-      id: result.insertId
-    });
+      description: data.get("description") || '',
+      path_img
+    }, { status: 201 });
+
   } catch (error) {
-    return NextResponse.json({error: error.message}, {status: 500});
+    console.error('Error creating faculty:', error);
+    return NextResponse.json(
+      { message: "Error creating faculty: " + error.message },
+      { status: 500 }
+    );
   }
 }
