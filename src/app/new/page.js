@@ -1,4 +1,4 @@
-import FacultyForm from '@/components/FacultyForm';
+import FacultyForm from '@/components/facultyForm';
 
 export default function NewPage() {
   return (
