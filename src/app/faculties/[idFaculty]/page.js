@@ -5,20 +5,27 @@ import Buttons from "@/components/buttons";
 
 async function loadFacultyId(facultyId) {
   try {
-    const baseURL = process.env.VERCEL_URL 
-      ? `https://${process.env.VERCEL_URL}`
+    // In production with Vercel
+    const baseURL = process.env.NEXT_PUBLIC_VERCEL_URL 
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
       : process.env.NODE_ENV === 'development' 
         ? 'http://localhost:3000'
         : '';
 
-    console.log("baseURL", baseURL);
-    const response = await axios.get(`${baseURL}/api/faculties/${facultyId}`);
+    // Use direct API route for better reliability
+    const response = await axios.get(`/api/faculties/${facultyId}`, {
+      baseURL,
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+      }
+    });
     
-    if (response.status === 200) {
+    if (response.status === 200 && response.data) {
       return response.data;
     }
 
-    return null;
+    throw new Error('Faculty not found');
   } catch (error) {
     console.error('Error loading faculty:', error);
     return null;
