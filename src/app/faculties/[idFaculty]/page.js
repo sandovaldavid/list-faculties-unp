@@ -95,7 +95,7 @@ async function FacultyPage({params}) {
                 <h2 className="text-xl font-semibold text-gray-700 mb-2">
                   Descripción
                 </h2>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-wrap">
                   {faculty.description || "No hay descripción disponible"}
                 </p>
               </div>
