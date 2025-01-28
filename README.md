@@ -101,6 +101,8 @@ DB_PORT=3306
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
+NEXT_PUBLIC_BACKEND_URL=localhost:3000
+
 ```
 
 ## 📁 Project Structure
