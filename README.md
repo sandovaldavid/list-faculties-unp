@@ -54,10 +54,10 @@ A web application for managing university faculties. This project provides a com
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/list-faculties-CRUD.git
+git clone https://github.com/sandovaldavid/list-faculties-unp.git
 
 # Navigate to project directory
-cd list-faculties-CRUD
+cd list-faculties-unp
 
 # Install dependencies
 npm install
