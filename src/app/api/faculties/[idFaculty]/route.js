@@ -29,33 +29,52 @@ export async function DELETE(request, {params}) {
   }
 }
 
-export async function PUT(request, {params}) {
+export async function PUT(request, { params }) {
   try {
     const data = await request.formData();
-    
+
     const image = data.get("facultyImage");
     const updateFaculty = {
       name: data.get('name'),
       description: data.get('description'),
     }
+
     if (!data.get("name")) {
-      return NextResponse.json({message: "name is required"}, {status: 400})
+      return NextResponse.json({ message: "name is required" }, { status: 400 })
     }
+
+    // Handle image upload
     if (image) {
-      const filePath = await processImage(image);
-      const result = await cloudinary.uploader.upload(filePath);
-      updateFaculty.path_img = result.secure_url;
-      if (result) {
-        await unlink(filePath);
+      const buffer = await processImage(image);
+
+      // Upload buffer directly to Cloudinary
+      const result = await cloudinary.uploader.upload(
+        `data:${image.type};base64,${buffer.toString('base64')}`
+      );
+
+      if (result && result.secure_url) {
+        updateFaculty.path_img = result.secure_url;
       }
     }
-    const response = await pool.query("UPDATE faculties SET ? WHERE id = ?", [updateFaculty, params.idFaculty]);
+
+    const response = await pool.query(
+      "UPDATE faculties SET ? WHERE id = ?",
+      [updateFaculty, params.idFaculty]
+    );
+
     if (response.affectedRows === 0) {
-      return NextResponse.json({message: "Faculty not found"}, {status: 404})
+      return NextResponse.json({ message: "Faculty not found" }, { status: 404 })
     }
-    return new Response(null, {status: 204})
+
+    return NextResponse.json({
+      message: "Faculty updated successfully",
+      faculty: updateFaculty
+    }, { status: 200 });
+
   } catch (e) {
-    return NextResponse.json({error: e.message}, {status: 500})
+    console.error('Error updating faculty:', e);
+    return NextResponse.json({
+      error: "Error updating faculty: " + e.message
+    }, { status: 500 })
   }
 }
-
