@@ -35,7 +35,7 @@ A web application for managing university faculties. This project provides a com
 
 ## 🛠 Tech Stack
 
-| Technology    | Purpose                         |
+| Technology   | Purpose                          |
 |--------------|----------------------------------|
 | Next.js 14   | Frontend & Backend Framework     |
 | MySQL        | Database                         |
@@ -112,21 +112,21 @@ list-faculties-CRUD/
 ├── src/
 │   ├── app/             # Next.js pages
 │   ├── components/      # React components
-│   └── libs/           # Utilities and configurations
-├── database/           # Database scripts
-├── docker/            # Docker configuration
-└── public/            # Static assets
+│   └── libs/            # Utilities and configurations
+├── database/            # Database scripts
+├── docker/              # Docker configuration
+└── public/              # Static assets
 ```
 
 ## 🔄 API Endpoints
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/faculties` | GET | Get all faculties |
-| `/api/faculties` | POST | Create new faculty |
-| `/api/faculties/:id` | GET | Get faculty by ID |
-| `/api/faculties/:id` | PUT | Update faculty |
-| `/api/faculties/:id` | DELETE | Delete faculty |
+| Endpoint             | Method | Description         |
+|----------------------|--------|---------------------|
+| `/api/faculties`     | GET    | Get all faculties   |
+| `/api/faculties`     | POST   | Create new faculty  |
+| `/api/faculties/:id` | GET    | Get faculty by ID   |
+| `/api/faculties/:id` | PUT    | Update faculty      |
+| `/api/faculties/:id` | DELETE | Delete faculty      |
 
 ## 🤝 Contributing
 
