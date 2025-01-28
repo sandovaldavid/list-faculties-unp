@@ -16,12 +16,12 @@ export async function GET() {
   }
 }
 
+
 export async function POST(request) {
   try {
     const data = await request.formData();
     const image = data.get("facultyImage");
 
-    // Validate required fields
     if (!data.get("name")) {
       return NextResponse.json(
         { message: "Name is required" },
@@ -31,10 +31,11 @@ export async function POST(request) {
 
     let path_img = '';
     if (image) {
-      const filePath = await processImage(image);
-      const resImg = await cloudinary.uploader.upload(filePath);
+      const buffer = await processImage(image);
+
+      const resImg = await cloudinary.uploader.upload(`data:${image.type};base64,${buffer.toString('base64')}`);
+
       if (resImg) {
-        await unlink(filePath);
         path_img = resImg.secure_url;
       }
     }
