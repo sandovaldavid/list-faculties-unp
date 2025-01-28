@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { pool } from "@/libs/mysql";
 import cloudinary from "@/libs/cloudinary";
 import { processImage } from "@/libs/processImage";
-import { unlink } from "fs/promises";
 
 export async function GET() {
   try {
