@@ -40,7 +40,7 @@ function FacultyCard({ faculty }) {
         <h2 className="text-xl font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-blue-600 transition duration-300">
           {faculty.name}
         </h2>
-        <p className="text-gray-600 text-sm flex-grow line-clamp-3 mb-4">
+        <p className="text-gray-600 text-sm flex-grow line-clamp-2 mb-4 text-wrap">
           {faculty.description || "No description available"}
         </p>
 
