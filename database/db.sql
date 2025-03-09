@@ -28,3 +28,5 @@ INSERT INTO faculties (name, description, path_img) VALUES
                                                         ('Faculty of Pharmacy', 'Trains professionals in pharmaceutical sciences and practice.', '/images/pharmacy.jpg'),
                                                         ('Faculty of Veterinary Medicine', 'Dedicated to the study and care of animal health.', '/images/veterinary_medicine.jpg'),
                                                         ('Faculty of Public Health', 'Focuses on public health practices, policies, and research.', '/images/public_health.jpg');
+# Update the path_img column in the faculties table
+update faculties set path_img = 'https://placehold.co/600x400/png?text=facultades'
