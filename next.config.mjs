@@ -23,6 +23,11 @@ const nextConfig = {
         destination: '/faculties',
         permanent: true,
       },
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+        permanent: true,
+      },
     ];
   }
 };
