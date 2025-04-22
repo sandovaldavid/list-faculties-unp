@@ -1,8 +1,9 @@
 import FacultyCard from "@/components/facultyCard";
 import {pool} from "@/libs/mysql";
-import { generateBasicMetadata } from '@/libs/seoConfig';
+import { generateBasicMetadata, generateViewport } from '@/libs/seoConfig';
 
 export const metadata = generateBasicMetadata('faculties');
+export const viewport = generateViewport();
 
 export const revalidate = 0;
 
