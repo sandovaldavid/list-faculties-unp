@@ -17,12 +17,12 @@
 
 <div align="center">
   <h3>Vista Desktop</h3>
-  <img src="images/mockups/desktop.png" alt="Vista Desktop" width="800"/>
+  <img src="./public/images/mockups/desktop.png" alt="Vista Desktop" width="800"/>
   
   <h3>Vista Mobile</h3>
   <div style="display: flex; justify-content: center; gap: 20px;">
-    <img src="images/mockups/mobile-2.png" alt="Vista Mobile 1" width="250"/>
-    <img src="images/mockups/mobile.png" alt="Vista Mobile 2" width="250"/>
+    <img src="./public/images/mockups/mobile-2.png" alt="Vista Mobile 1" width="250"/>
+    <img src="./public/images/mockups/mobile.png" alt="Vista Mobile 2" width="250"/>
   </div>
 </div>
 
