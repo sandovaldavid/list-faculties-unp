@@ -322,7 +322,7 @@ export default async function HomePage() {
 								</div>
 							</div>
 							<p className="text-gray-700 italic leading-relaxed">
-								"Este sistema ha simplificado enormemente la gestión de información académica en nuestra facultad. La interfaz es intuitiva y nos permite mantener toda la información actualizada de manera eficiente."
+								&quot;Este sistema ha simplificado enormemente la gestión de información académica en nuestra facultad. La interfaz es intuitiva y nos permite mantener toda la información actualizada de manera eficiente.&quot;
 							</p>
 						</div>
                         
@@ -342,7 +342,7 @@ export default async function HomePage() {
 								</div>
 							</div>
 							<p className="text-gray-700 italic leading-relaxed">
-								"La capacidad de gestionar las facultades con esta plataforma ha mejorado la organización de nuestra universidad. Es una herramienta indispensable para la administración académica moderna."
+								&quot;La capacidad de gestionar las facultades con esta plataforma ha mejorado la organización de nuestra universidad. Es una herramienta indispensable para la administración académica moderna.&quot;
 							</p>
 						</div>
 					</div>
@@ -413,7 +413,7 @@ export default async function HomePage() {
 								¿Cómo puedo crear una nueva facultad?
 							</h3>
 							<p className="text-gray-600 leading-relaxed">
-								Para crear una nueva facultad, haz clic en el botón "Nueva Facultad" en la barra de navegación o en la página principal. Completa el formulario con la información requerida y sube una imagen representativa si lo deseas.
+								Para crear una nueva facultad, haz clic en el botón &quot;Nueva Facultad&quot; en la barra de navegación o en la página principal. Completa el formulario con la información requerida y sube una imagen representativa si lo deseas.
 							</p>
 						</div>
                         
@@ -425,7 +425,7 @@ export default async function HomePage() {
 								¿Puedo editar la información de una facultad existente?
 							</h3>
 							<p className="text-gray-600 leading-relaxed">
-								Sí, puedes editar cualquier facultad existente. Simplemente ve a la página de detalles de la facultad y haz clic en el botón "Editar". Podrás modificar toda la información, incluyendo la imagen si es necesario.
+								Sí, puedes editar cualquier facultad existente. Simplemente ve a la página de detalles de la facultad y haz clic en el botón &quot;Editar&quot;. Podrás modificar toda la información, incluyendo la imagen si es necesario.
 							</p>
 						</div>
                         
