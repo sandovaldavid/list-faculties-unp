@@ -6,6 +6,7 @@ const DEFAULT_OG_IMAGE = `${SITE_URL}/images/og/og-faculties-unp.png`;
 const AUTHOR = "David Sandoval";
 const TWITTER_HANDLE = "@dev_sandoval";
 const LOCALE = "es_PE";
+const THEME_COLOR = "#1F2937";
 
 // Configuración para páginas específicas
 const PAGE_METADATA = {
@@ -94,6 +95,17 @@ const generateBasicMetadata = (pageKey, params = {}) => {
   };
 };
 
+// Función para generar configuración de viewport
+const generateViewport = () => {
+  return {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    themeColor: THEME_COLOR,
+    colorScheme: "light only"
+  };
+};
+
 export {
   SITE_URL,
   SITE_NAME,
@@ -102,6 +114,8 @@ export {
   AUTHOR,
   TWITTER_HANDLE,
   LOCALE,
+  THEME_COLOR,
   generateBasicMetadata,
+  generateViewport,
   getCanonicalUrl,
 };
