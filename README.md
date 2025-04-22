@@ -69,7 +69,7 @@ docker-compose up web-dev -d
 docker-compose up web-prod -d
 
 # Initialize database
-docker exec -i db_facultades mysql -u adm -padm facultades < database/db.sql
+docker exec -i db_facultades mysql -u user_facultades -ppassword < database/db.sql
 
 # Run development server
 npm run dev
