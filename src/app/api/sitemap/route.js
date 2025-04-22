@@ -33,6 +33,14 @@ function generateSitemapXml(pages, faculties) {
 		xml += '    <changefreq>weekly</changefreq>\n';
 		xml += '    <priority>0.8</priority>\n';
 		xml += '  </url>\n';
+		
+		// Agregar también la página de edición para cada facultad
+		xml += '  <url>\n';
+		xml += `    <loc>${SITE_URL}/faculties/edit/${faculty.id}</loc>\n`;
+		xml += `    <lastmod>${getCurrentDate()}</lastmod>\n`;
+		xml += '    <changefreq>monthly</changefreq>\n';
+		xml += '    <priority>0.6</priority>\n';
+		xml += '  </url>\n';
 	});
 
 	xml += '</urlset>';
