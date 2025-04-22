@@ -1,0 +1,17 @@
+# Allow all web crawlers (search engine robots)
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://facultades-unp.devsandoval.me/sitemap.xml
+
+# Disallow admin or sensitive paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /_vercel/
+
+# Disallow no-index paths
+Disallow: /*.json$
+
+# Configure crawl rate (optional)
+# Crawl-delay: 10

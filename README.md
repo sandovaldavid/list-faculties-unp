@@ -35,13 +35,13 @@ A web application for managing university faculties. This project provides a com
 
 ## 🛠 Tech Stack
 
-| Technology   | Purpose                          |
-|--------------|----------------------------------|
-| Next.js 14   | Frontend & Backend Framework     |
-| MySQL        | Database                         |
-| Tailwind CSS | Styling                          |
-| Docker       | Containerization                 |
-| Cloudinary   | Image Storage                    |
+| Technology   | Purpose                      |
+| ------------ | ---------------------------- |
+| Next.js 14   | Frontend & Backend Framework |
+| MySQL        | Database                     |
+| Tailwind CSS | Styling                      |
+| Docker       | Containerization             |
+| Cloudinary   | Image Storage                |
 
 ## 📋 Prerequisites
 
@@ -69,7 +69,7 @@ docker-compose up web-dev -d
 docker-compose up web-prod -d
 
 # Initialize database
-docker exec -i db_facultades mysql -u adm -padm facultades < database/db.sql
+docker exec -i db_facultades mysql -u user_facultades -ppassword < database/db.sql
 
 # Run development server
 npm run dev
@@ -107,7 +107,7 @@ NEXT_PUBLIC_BACKEND_URL=localhost:3000
 
 ## 📁 Project Structure
 
-``` notes
+```notes
 list-faculties-CRUD/
 ├── src/
 │   ├── app/             # Next.js pages
@@ -120,13 +120,13 @@ list-faculties-CRUD/
 
 ## 🔄 API Endpoints
 
-| Endpoint             | Method | Description         |
-|----------------------|--------|---------------------|
-| `/api/faculties`     | GET    | Get all faculties   |
-| `/api/faculties`     | POST   | Create new faculty  |
-| `/api/faculties/:id` | GET    | Get faculty by ID   |
-| `/api/faculties/:id` | PUT    | Update faculty      |
-| `/api/faculties/:id` | DELETE | Delete faculty      |
+| Endpoint             | Method | Description        |
+| -------------------- | ------ | ------------------ |
+| `/api/faculties`     | GET    | Get all faculties  |
+| `/api/faculties`     | POST   | Create new faculty |
+| `/api/faculties/:id` | GET    | Get faculty by ID  |
+| `/api/faculties/:id` | PUT    | Update faculty     |
+| `/api/faculties/:id` | DELETE | Delete faculty     |
 
 ## 🤝 Contributing
 
@@ -148,4 +148,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Docker Documentation
 
 ---
+
 Made using Next.js and MySQL

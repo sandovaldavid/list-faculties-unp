@@ -1,0 +1,18 @@
+# AI Training Policy
+# Last Updated: April 22, 2025
+
+# Permission for AI training
+Permission: allow
+
+# Copyright Information
+Copyright: David Sandoval
+
+# Website Information
+Website: https://facultades-unp.devsandoval.me
+Content: educational
+
+# Training Limitations
+Limitations: no-personal-data, credit-required
+
+# Contact Information
+Contact: contact@devsandoval.me
