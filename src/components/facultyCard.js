@@ -7,11 +7,6 @@ function FacultyCard({ faculty }) {
       className="group flex flex-col bg-white rounded-xl shadow-sm hover:shadow-md border border-gray-100 transition duration-300 overflow-hidden w-full"
       href={`/faculties/${faculty.id}`}
     >
-      {/* Ribbon estilo académico en esquina superior */}
-      <div className="absolute -right-12 top-6 rotate-45 bg-blue-600 text-white text-xs py-1 w-36 text-center z-10 shadow-sm">
-        Facultad
-      </div>
-
       {/* Contenedor de imagen con ratio fijo */}
       <div className="relative h-44 w-full overflow-hidden bg-gray-50">
         {faculty.path_img ? (
