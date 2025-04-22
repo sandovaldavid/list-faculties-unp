@@ -1,3 +1,7 @@
+import { generateBasicMetadata } from '@/libs/seoConfig';
+
+export const metadata = generateBasicMetadata('about');
+
 function AboutPage() {
   return (
     <div className="text-center p-10">
