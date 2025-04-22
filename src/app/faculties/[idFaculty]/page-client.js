@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import BackButton from "@/components/BackButton";
 import Buttons from "@/components/buttons";
-import { SITE_URL, DEFAULT_OG_IMAGE } from "@/libs/seoConfig";
+import { SITE_URL, DEFAULT_OG_IMAGE, getCanonicalUrl } from "@/libs/seoConfig";
 
 function FacultyPageClient({ params }) {
   const router = useRouter();
@@ -14,8 +14,8 @@ function FacultyPageClient({ params }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  // Construir URL canónica dinámica
-  const canonicalUrl = `${SITE_URL}/faculties/${params.idFaculty}`;
+  // Construir URL canónica dinámica usando la función centralizada
+  const canonicalUrl = getCanonicalUrl(`/faculties/${params.idFaculty}`);
 
   useEffect(() => {
     const loadFaculty = async () => {
