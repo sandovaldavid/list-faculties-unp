@@ -6,7 +6,7 @@ const inter = Inter({subsets: ["latin"]});
 
 export const metadata = {
   title: "Sistema de Gestión de Facultades | UNP",
-  description: "Sistema para la gestión de facultades universitarias. Permite operaciones CRUD sobre la información de las facultades de la Universidad Nacional de Piura.",
+  description: "Sistema CRUD para gestionar facultades de la Universidad Nacional de Piura. Crea, lee, actualiza y elimina información académica.",
   keywords: [
     "facultades",
     "universidad",
@@ -22,10 +22,10 @@ export const metadata = {
   publisher: "Universidad Nacional de Piura",
   manifest: "/manifest.json",
   themeColor: "#1F2937",
-  colorScheme: "dark light",
+  colorScheme: "light only",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/images/icons/favicon-16x16.png", sizes: "16x16" },
       { url: "/images/icons/favicon-32x32.png", sizes: "32x32" }
     ],
@@ -55,6 +55,7 @@ export default function RootLayout({children}) {
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
         <meta name="theme-color" content="#1F2937" />
+        <meta name="color-scheme" content="light only" />
       </head>
       <body className={inter.className}>
         <Navbar/>
