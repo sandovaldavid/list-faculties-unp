@@ -4,7 +4,7 @@ import Link from "next/link";
 function FacultyCard({ faculty }) {
   return (
     <Link
-      className="group flex flex-col bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 overflow-hidden w-full sm:w-80 md:w-96 lg:w-80 xl:w-96 mb-8 mx-4"
+      className="group flex flex-col bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 overflow-hidden w-full sm:w-86 mb-8"
       href={`/faculties/${faculty.id}`}
     >
       <div className="relative h-48 w-full overflow-hidden">
