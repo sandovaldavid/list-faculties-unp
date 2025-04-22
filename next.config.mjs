@@ -19,11 +19,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/faculties',
-        permanent: true,
-      },
-      {
         source: '/sitemap.xml',
         destination: '/api/sitemap',
         permanent: true,
