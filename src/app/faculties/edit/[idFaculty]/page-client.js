@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { SITE_URL, DEFAULT_OG_IMAGE } from "@/libs/seoConfig";
+import { SITE_URL, DEFAULT_OG_IMAGE, getCanonicalUrl } from "@/libs/seoConfig";
 import Head from "next/head";
 import FacultyForm from '@/components/facultyForm';
 
@@ -8,8 +8,8 @@ function EditFacultyClientPage({ params }) {
   const router = useRouter();
   const facultyId = params.idFaculty;
   
-  // Construir URL canónica dinámica
-  const canonicalUrl = `${SITE_URL}/faculties/edit/${facultyId}`;
+  // Construir URL canónica dinámica usando la función centralizada
+  const canonicalUrl = getCanonicalUrl(`/faculties/edit/${facultyId}`);
 
   return (
     <>
