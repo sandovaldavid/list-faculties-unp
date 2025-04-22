@@ -11,14 +11,14 @@ function Navbar() {
         <div className="flex justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex items-center">
-            <Link href="./" className="flex items-center hover:text-blue-400 transition duration-300">
+            <Link href="/" className="flex items-center hover:text-blue-400 transition duration-300">
               <h3 className="text-xl md:text-2xl font-bold">Facultades UNP</h3>
             </Link>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="./"
+            <Link href="/faculties"
               className="hover:text-blue-400 px-3 py-2 transition duration-300">
               Facultades
             </Link>
