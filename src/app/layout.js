@@ -96,13 +96,6 @@ export default function RootLayout({children}) {
   return (
     <html lang="es" className="dark:bg-gray-950">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
-        <link rel="canonical" href={SITE_URL} />
-        <meta name="theme-color" content="#1F2937" />
-        <meta name="color-scheme" content="light only" />
-        <meta name="author" content={AUTHOR} />
-        <meta name="publisher" content="Universidad Nacional de Piura" />
         <meta property="og:title" content={SITE_NAME} />
         <meta property="og:description" content={SITE_DESCRIPTION} />
         <meta property="og:image" content={SITE_IMAGE} />
