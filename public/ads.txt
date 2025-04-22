@@ -1,0 +1,12 @@
+# Authorized Digital Sellers for facultades-unp.devsandoval.me
+# Last Updated: April 22, 2025
+
+# Format: <ad system domain>, <publisher ID>, <relationship type>, <certification authority ID>
+
+# Google AdSense
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# Example for other ad networks (add your actual accounts if needed)
+# example.com, 1234, RESELLER, 5gdf45tgh
+
+# For more information about the ads.txt specification, visit https://iabtechlab.com/ads-txt/
