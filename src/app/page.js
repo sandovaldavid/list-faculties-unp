@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { generateBasicMetadata } from '@/libs/seoConfig';
 import { pool } from '@/libs/mysql';
 import University from '@/components/icons/University';
