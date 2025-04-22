@@ -66,8 +66,6 @@ export const metadata = {
     "sistema universitario"
   ],
   manifest: "/manifest.json",
-  themeColor: "#1F2937",
-  colorScheme: "light only",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -89,8 +87,9 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5,
   themeColor: "#1F2937",
+  colorScheme: "light only"
 };
 
 export default function RootLayout({children}) {
